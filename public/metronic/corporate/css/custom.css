@@ -1,0 +1,126 @@
+/* here you can put your own css to customize and override the theme */
+
+.header-text{
+  background-color: #E84D1C;
+  padding: 20px;
+}
+
+.asterisk{
+  color: #E84D1C;
+}
+
+.header-text ul li{
+  list-style-type: square;
+  color: #fff;
+}
+
+.mem-bg{
+  margin: auto;
+  box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.43);
+-webkit-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.43);
+-moz-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.43);
+  padding: 20px 20px;
+  margin-bottom: 20px;
+}
+
+.line{
+  background-color: #E84D1C;
+  padding: .5px 0;
+  margin: 20px 0;
+}
+
+.this-form .form-control{
+  text-transform: uppercase !important;
+}
+
+.personal-info-text{
+  padding-top: 20px;
+
+}
+
+.spouse-info-text{
+  display: flex;
+}
+
+.personal-info-text h3{
+  font-weight: bolder;
+}
+
+.personal-info-text small{
+  color: #E84D1C;
+}
+
+.submit_btn, .apply-button{
+  background-color: #E84D1C;
+  color: #fff;
+  border: none;
+  padding: 20px;
+  width: 100%;
+  font-size: 14px;
+}
+
+.submit_btn:hover{
+   background-color:  #d14115;
+   cursor: pointer;
+}
+
+.selfie, .id_pic{
+  border: none !important;
+}
+
+.vision, .mission {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.col-sm.backImage img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25%;
+
+}
+
+.regular-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+
+}
+
+.container-head, .container-body{
+  justify-self: center;
+  grid-column: 2 / -1;
+}
+
+.image-container{
+  justify-self: center;
+  grid-row: 1 / 1;
+}
+
+.apply-button{
+  margin-left: 43%;
+  border-radius: 30px !important;
+}
+.apply{
+  height: 50px;
+}
+
+.lad-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: #d14115 solid 1px;
+
+}
+
+.lad-container-head, .lad-container-body{
+  justify-self: center;
+  grid-column: 1;
+}
+
+.lad-image-container{
+  justify-self: center;
+  grid-column: 2;
+  grid-row: 1;
+}
+
