@@ -25,6 +25,10 @@ class ActiveLoanController extends Controller
         $acc_id = $express['acc_id'];
         $loan = LoanApplication::where('account_no', $acc_id)->get();
         $LAD =  LadLoans::where('account_no', $acc_id)->get();
+
+
+
+
         return view('client.dashboard.active-loan', compact('loan','LAD'));
     }
 

@@ -44,25 +44,6 @@
    @endforeach
 
 
-   {{-- @foreach ($LAD as $lad)
-   <tr>
-       <td>{{$lad->name_of_member}}</td>
-       <td>{{$lad->account_no}}</td>
-       <td>{{$lad->loan_type}}</td>
-       <td>{{$lad->created_at}}</td>
-     
-       <td> @if($lad->is_approved == 0)
-        <span class="badge badge-secondary">Pending</span>
-        @elseif ($lad->is_approved == 1)
-        <span class="badge badge-success">Pre-Approved</span>
-        @else
-        <span class="badge badge-success">Approved</span>
-      @endif</td>
-       <td>
-            <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#myModal01{{ $lad->id }}">Details</button>
-        </td> 
-    </tr>
-   @endforeach --}}
     
   </tbody>
 </table>
@@ -391,9 +372,7 @@
 
 
  
-<!-- LAD AMORTIZATION COMPUTATION -->
 
- 
 
           <!-- END LAD LOAN MODAL -->
 
