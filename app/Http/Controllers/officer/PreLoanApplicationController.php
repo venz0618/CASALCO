@@ -4,6 +4,7 @@ namespace App\Http\Controllers\officer;
 use App\Models\ExpressLoanApp;
 use App\Http\Controllers\Controller;
 use App\Models\LoanApplication;
+use App\Models\LadLoans;
 use Illuminate\Http\Request;
 
 class PreLoanApplicationController extends Controller
@@ -16,8 +17,9 @@ class PreLoanApplicationController extends Controller
     public function index()
     {
         $loan = LoanApplication::where('is_approved', 0)->get();
+        $LAD = LadLoans::where('is_approved', 0)->get();
         
-        return view('officer.loan', compact('loan'));
+        return view('officer.loan', compact('loan', 'LAD'));
     }
 
     /**
@@ -86,6 +88,7 @@ class PreLoanApplicationController extends Controller
     public function edit($id)
     {
         $loan = LoanApplication::find($id);
+        $LAD = LadLoans::find($id);
         return view('officer.loan', compact('loan'));
     }
 
@@ -103,6 +106,8 @@ class PreLoanApplicationController extends Controller
         // $loan->acc_id = $request->acc_id;
         // $loan->or_no = $request->or_no;
         $loan->save();
+
+      
 
         return redirect('officer/pre-approved-loans');
     }

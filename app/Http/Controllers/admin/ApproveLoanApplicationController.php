@@ -5,7 +5,7 @@ use App\Models\ExpressLoanApp;
 use App\Http\Controllers\Controller;
 use App\Models\LoanApplication;
 use Illuminate\Http\Request;
-
+use App\Models\LadLoans;
 class ApproveLoanApplicationController extends Controller
 {
     /**
@@ -16,8 +16,9 @@ class ApproveLoanApplicationController extends Controller
     public function index()
     {
         $loan = LoanApplication::where('is_approved', 1)->get();
+        $LAD = LadLoans::where('is_approved', 1)->get();
         
-        return view('admin.loan_app', compact('loan'));
+        return view('admin.loan_app', compact('loan','LAD'));
     }
 
     /**
@@ -72,15 +73,26 @@ class ApproveLoanApplicationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {   
         $loan = LoanApplication::find($id);
-        $loan->is_approved = $request->is_approved;
-        // $loan->acc_id = $request->acc_id;
-        // $loan->or_no = $request->or_no;
+        
+        if($loan)
+        {$loan->is_approved = $request->is_approved;
         $loan->save();
-
         return redirect('admin/approved-loans');
     }
+        else{
+            $LAD = LadLoans::find($id);
+            $LAD->is_approved = $request->is_approved;
+            $LAD->save();
+    
+            return redirect('admin/approved-loans');
+        }
+
+        
+       
+    }
+   
 
     /**
      * Remove the specified resource from storage.

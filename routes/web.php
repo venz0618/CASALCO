@@ -11,6 +11,7 @@ use App\Http\Controllers\officer\PreLoanApplicationController;
 use App\Http\Controllers\officer\ReportsLoanApplicationController;
 use App\Http\Controllers\MembershipApplicationController;
 use App\Http\Controllers\officer\ProductLoanController;
+use App\Http\Controllers\officer\PreApprovedLadLoansController;
 
 // ADMIN CONTROLLER
 use App\Http\Controllers\admin\AdminDashboardController;
@@ -19,7 +20,7 @@ use App\Http\Controllers\admin\ApproveLoanApplicationController;
 use App\Http\Controllers\admin\LoanApplicationReportsController;
 use App\Http\Controllers\admin\AccountController;
 use App\Http\Controllers\admin\MemberListController;
-
+use App\Http\Controllers\admin\ApprovedLadLoansController;
 // CLIENT CONTROLLER
 use App\Http\Controllers\MembershipReportsController;
 use App\Http\Controllers\RegistrationController;
@@ -66,6 +67,8 @@ Route::middleware(['auth', 'isAdmin'])->group(function() {
   Route::resource('/admin/approved-loans', LoanApplicationReportsController::class);
   Route::resource('/admin/member-list', MemberListController::class);
   Route::resource('/admin/accounts', AccountController::class);
+  Route::resource('/approved', ApprovedLadLoansController::class);
+
 
 
 });
@@ -94,7 +97,7 @@ Route::resource('/regular-special-loan-form', RegularSpecialLoanController::clas
 Route::resource('/loan-history', LoanHistoryController::class);
 Route::resource('/home', PreSeminarController::class);
 Route::view('/regular-loans-information', 'client.loan.regular.regular-loans-information');
-Route::view('/LAD-loans-information', 'client.loan.loan_against_deposit.lad-loans-information');
+Route::view('/LAD-loans-information', 'client.loan.LAD.lad-loans-information');
 Route::view('/express-loans-information','client.loan.express.express-loans-information');
 Route::view('/special-loans-information','client.loan.special.special-loans-information');
 Route::resource('/express-loan-application-form', ExpressLoanController::class);
@@ -117,6 +120,8 @@ Route::middleware(['auth', 'isOfficer'])->group(function() {
   Route::resource('/officer/pre-approved-loans', ReportsloanApplicationController::class);
   Route::resource('/product-loans', ProductLoanController::class);
   Route::resource('/officer/membership_info', MembershipInfoController::class);
+  Route::resource('/pre-approved', PreApprovedLadLoansController::class);
+
   // Route::get('/officer/{id}', [MembershipInfoController::class, 'show']);
   // Route::get('/officer/membership_info/{id}', 'MembershipInfoController@show')->name('displayMembershipApplication');
 

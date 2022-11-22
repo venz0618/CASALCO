@@ -19,10 +19,10 @@
 
               </div>
               <div class="col-sm">
-
+                <img src="{{ asset($membership->selfie_pic)}}" width = '200' height = '200' class = "img img-responsive" />
               </div>
               <div class="col-sm">
-                <img src="{{ asset($membership->selfie_pic)}}" width = '100' height = '100' class = "img img-responsive" />
+               
               </div>
             </div>
           </div>
@@ -257,6 +257,20 @@
               <label for="First Name" class="form-label">SSS No.</label>
                 <input name ="SSSnum" type="text" class="form-control"  placeholder="SSS" value="{{ $membership->SSSnum }}">
               </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="row">
+            <div class="col-sm">
+              <img src="{{ asset($membership->empIDpic)}}" width = '200' height = '150' class = "img img-responsive" />
+            </div>
+            <div class="col-sm">
+             
+            </div>
+            <div class="col-sm">
+             
             </div>
           </div>
         </div>

@@ -5,6 +5,7 @@ use App\Models\ExpressLoanApp;
 use App\Http\Controllers\Controller;
 use App\Models\LoanApplication;
 use Illuminate\Http\Request;
+use App\Models\LadLoans;
 
 class ReportsLoanApplicationController extends Controller
 {
@@ -16,8 +17,9 @@ class ReportsLoanApplicationController extends Controller
     public function index()
     {
         $loan = LoanApplication::where('is_approved', 1)->get();
+        $LAD = LadLoans::where('is_approved', 1)->get();
         
-        return view('officer.pre-approved-loans', compact('loan'));
+        return view('officer.pre-approved-loans', compact('loan','LAD'));
     }
 
     /**

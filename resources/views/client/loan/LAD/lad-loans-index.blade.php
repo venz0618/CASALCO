@@ -177,7 +177,7 @@
         </div>
         <div class="col-lg-4 col-md-4">
             <div class="form-group" id="">
-                <small>Term Applied&#40;<small class="text-danger">Number of months only</small>&#41;</small><span class="asterisk">*</span>
+                <small>Term Applied&#40;<small class="text-danger">(36 months max) Number of months only</small>&#41;</small><span class="asterisk">*</span>
                 <input type="text" class="form-control" name="term_applied" placeholder="enter term applied" value="{{ old('term_applied') }}">
                 <small class="text-danger">@error('term_applied') {{ $message }}@enderror</small>
             </div>

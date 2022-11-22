@@ -36,6 +36,24 @@
                       </td>  --}}
                   </tr>
                  @endforeach
+
+                   <!--LAD LOAN-->
+                   @foreach ($LAD as $lad)
+                   <tr>
+                     <td>{{$lad->name_of_member}}</td>
+                     <td>{{$lad->account_no}}</td>
+                     <td>{{$lad->loan_type}}</td>
+                     <td>{{$lad->created_at}}</td>
+                   
+                     <td> @if($lad->is_approved)
+                     <span class="badge badge-success">Approved</span>
+                   @endif
+                 </td>
+                     {{-- <td>
+                       <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#myModal01{{ $lad->id }}">Details</button>
+                     </td>  --}}
+                 </tr>
+                 @endforeach
                   
                 </tbody>
               </table>

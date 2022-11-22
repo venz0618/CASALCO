@@ -27,7 +27,7 @@
 <!-- END CONTAINER -->
 
 <div class="apply">
-    <a href="#" class="apply-button" >Apply for loan</a>
+    <a href="/lad-loans" class="apply-button" >Apply for loan</a>
 </div>
 
 @endsection
