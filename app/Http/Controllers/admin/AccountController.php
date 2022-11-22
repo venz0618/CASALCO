@@ -37,7 +37,6 @@ class AccountController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'acc_id'        => 'required|unique:users',
             'user_type'     => 'required',
             'username'      => 'required|unique:users',
             'email'         => 'required|email|unique:users',
@@ -47,7 +46,6 @@ class AccountController extends Controller
       
         
             $user = new User();
-            $user->acc_id = $request->acc_id;
             $user->user_type = $request->user_type;
             $user->username = $request->username;
             $user->email = $request->email;

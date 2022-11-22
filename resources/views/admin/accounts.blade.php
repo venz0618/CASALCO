@@ -48,12 +48,6 @@
 						<div class="row">
 							<div class="col-6">
 								<div class="form-group">
-									<label for="First Name" class="form-label">Account ID</label>
-									<input type="text" class="form-control" name="acc_id" placeholder="Account ID">
-								</div>
-							</div>
-							<div class="col-6">
-								<div class="form-group">
 									<label for="First Name" class="form-label">Name</label>
 									<input type="text" class="form-control" name="username" placeholder="Name">
 								</div>

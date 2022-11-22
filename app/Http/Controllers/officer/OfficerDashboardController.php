@@ -5,6 +5,7 @@ namespace App\Http\Controllers\officer;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\MembershipApplication;
+use App\Models\LoanApplication;
 
 class OfficerDashboardController extends Controller
 {
@@ -16,7 +17,8 @@ class OfficerDashboardController extends Controller
     public function index()
     {
         $membership = MembershipApplication::where('is_approved', 0)->get();
-        return view('officer.dashboard', compact('membership'));
+        $loan = LoanApplication::where('is_approved', 0)->get();
+        return view('officer.dashboard', compact('membership','loan'));
     }
 
     /**

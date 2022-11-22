@@ -157,7 +157,7 @@
             <div class="col-lg-4">
               <div class="form-group">
               <label for="First Name" class="form-label">Mode of Payment</label>
-                <input type="text" class="form-control" name="mode_payment" placeholder="Mode of Payment" {{$l->mode_of_payment}}>
+                <input type="text" class="form-control" name="mode_payment" placeholder="Mode of Payment" value="{{$l->mode_of_payment}}">
               </div>
             </div>
             <div class="col-lg-4">
@@ -186,7 +186,20 @@
             </div>
           </div>
         </div>
-
+        <div class="container">
+          <div class="row">
+            <div class="col-sm">
+             
+              <a href="{{ asset($l->scanned_signature)}}"><img class="img-responsive" src="{{ asset($l->scanned_signature)}}" style="height: 100px; width: 175px;"></a>
+            </div>
+            <div class="col-sm">
+             
+            </div>
+            <div class="col-sm">
+             
+            </div>
+          </div>
+        </div>
         
         <!-- Modal footer -->
         <div class="modal-footer">

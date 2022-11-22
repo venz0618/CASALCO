@@ -33,8 +33,8 @@
         <td>{{ date('m-d-Y h:i a', strtotime($m->updated_at)) }}</td>
         <!-- <td>{{ $m->assigned_officer }}</td> -->
         
-        <td> @if($m->is_approved==2)
-          <span class="badge badge-success">Approved</span>
+        <td> @if($m->is_approved)
+          <span class="badge badge-success">Pre-Approved</span>
         @endif
       </td>
         {{-- <td>

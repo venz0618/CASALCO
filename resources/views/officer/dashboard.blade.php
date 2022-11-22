@@ -47,7 +47,7 @@
 				</div>
 				<div class="counter_no">
 					<div>
-					<p class="total_no">0</p>
+					<p class="total_no">{{ count($loan) }}</p>
 					<p class="head_couter">Pending Loan Application
 					</div>
 				</div>

@@ -280,7 +280,7 @@
 
            
             <button type="submit"  id="form-submit" class="btn btn-success w-100 mb-2">Pre-Approved</button>
-            <button type="button"  class="btn btn-danger w-100 mb-2" data-dismiss="modal">Close</button>
+           
             {{-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> --}}
           </form>
         </div>

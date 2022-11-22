@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\LoanApplication;
 use Illuminate\Http\Request;
 use App\Models\LadLoans;
+use RealRashid\SweetAlert\Facades\Alert;
 class ApproveLoanApplicationController extends Controller
 {
     /**
@@ -76,19 +77,13 @@ class ApproveLoanApplicationController extends Controller
     {   
         $loan = LoanApplication::find($id);
         
-        if($loan)
-        {$loan->is_approved = $request->is_approved;
+      
+        $loan->is_approved = $request->is_approved;
         $loan->save();
-        return redirect('admin/approved-loans');
-    }
-        else{
-            $LAD = LadLoans::find($id);
-            $LAD->is_approved = $request->is_approved;
-            $LAD->save();
-    
-            return redirect('admin/approved-loans');
-        }
 
+        Alert::success('Successfull','Approved');
+        return redirect('admin/approved-loans');
+    
         
        
     }

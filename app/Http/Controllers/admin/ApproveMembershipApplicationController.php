@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\MembershipApplication;
 use App\Models\Member;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ApproveMembershipApplicationController extends Controller
 {
@@ -79,7 +80,7 @@ class ApproveMembershipApplicationController extends Controller
         $membership->or_no = $request->or_no;
         $membership->assigned_officer = auth()->user()->username;
         $membership->save();
-
+        Alert::success('Successfull','Approved');
         return redirect('admin/membership');
     }
 

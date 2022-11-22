@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\LoanApplication;
 use App\Models\LadLoans;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PreLoanApplicationController extends Controller
 {
@@ -105,6 +106,7 @@ class PreLoanApplicationController extends Controller
         $loan->is_approved = $request->is_approved;
         // $loan->acc_id = $request->acc_id;
         // $loan->or_no = $request->or_no;
+        Alert::success('Successfull','Pre-Approved');
         $loan->save();
 
       
