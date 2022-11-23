@@ -11,7 +11,7 @@
                 <!-- profile image -->
                 <div class="col-lg-12">
                    <div class="full dis_flex center_text">
-                      <div class="profile_img"><img width="180" class="rounded-circle" src="{{ asset('$member->selfie_pic')}}" alt="#" /></div>
+                      <div class="profile_img"><img width="180" class="rounded-circle" src="{{ asset($member->selfie_pic)}}" alt="#" /></div>
                       <div class="profile_contant">
                          <div class="contact_inner">
                             <h3>{{ $member->first_name }}&nbsp;{{ $member->middle_name }}&nbsp;{{ $member->last_name }}</h3>
