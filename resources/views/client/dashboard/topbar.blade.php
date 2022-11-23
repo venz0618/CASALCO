@@ -21,9 +21,8 @@
 								<span class="name_user">{{ Auth::user()->username }}</span>
 							</a>
 							<div class="dropdown-menu">
-								<a class="dropdown-item" href="profile.html">My Profile</a>
+								<a class="dropdown-item" href="/profile">My Profile</a>
 								<a class="dropdown-item" href="settings.html">Settings</a>
-								<a class="dropdown-item" href="/">Landing Page</a>
 								<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
 							</div>
 						</li>

@@ -26,6 +26,7 @@ use App\Http\Controllers\MembershipReportsController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ExpressLoanAppController;
 use App\Http\Controllers\RegularSpecialLoanController;
+use App\Http\Controllers\client\ProfileController;
 //use App\Http\Controllers\LoanHistoryController;
 use App\Http\Controllers\PreSeminarController;
 use App\Http\Controllers\client\ClientDashboardController;
@@ -108,6 +109,7 @@ Route::middleware(['auth', 'isClient'])->group(function() {
   Route::resource('/client/active-loan', ActiveLoanController::class);
   Route::resource('/lad-loans', LadLoansController::class);
   Route::view('/express-loans', 'client.loan.express.express-index');
+  Route::resource('/profile', ProfileController::class);
 });
 
 
