@@ -4,6 +4,7 @@ namespace App\Http\Controllers\client;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\ExpressLoanApp;
 use App\Models\Member;
 use App\Models\User;
 use Auth;
@@ -50,7 +51,11 @@ class ExpressLoanController extends Controller
      */
     public function store(Request $request)
     {
+
+
+
         $request->validate([
+            
             'name_of_member'        => 'required|string',
             'account_no'            => 'required',
             'present_address'       => 'required',
@@ -70,13 +75,21 @@ class ExpressLoanController extends Controller
             'scanned_signature'     => 'required',
         ]);
 
+        $loan = new LoanApplication();
+        $loan->users_id = $request->user_id;
+        $loan->save();
+
         $loanApp = $request->all();
 
         $pikshurSaPerma = time().$request->file('scanned_signature')->getClientOriginalName();
         $path = $request->file('scanned_signature')->storeAs('image', $pikshurSaPerma, 'public');
+      
         $loanApp["scanned_signature"] = '/storage/'.$path;
+        $loanApp['loan_application_id'] = $loan->id;
+        ExpressLoanApp::create($loanApp);
 
-        LoanApplication::create($loanApp);
+        
+       
 
         Alert::success('Application Successfully','Sent');
 

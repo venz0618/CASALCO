@@ -1,5 +1,5 @@
 <?php
-
+use App\Models\LoanApplication;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('lad_loans', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(LoanApplication::class);
             $table->string('name_of_member');
             $table->string('account_no');
             $table->string('present_address');
@@ -32,7 +33,6 @@ return new class extends Migration
             $table->integer('term_applied');
             $table->string('mode_of_payment');
             $table->string('scanned_signature',300);
-            $table->integer('is_approved')->default(0);
             $table->timestamps();
         });
     }

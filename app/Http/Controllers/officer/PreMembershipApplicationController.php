@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\officer;
-
+use App\Events\PreMembershipApplication as EventsPreMembershipApplication;
 use App\Http\Controllers\Controller;
 use App\Models\Beneficiary;
 use Illuminate\Http\Request;
@@ -272,7 +272,10 @@ class PreMembershipApplicationController extends Controller
         $membership->save();
 
         Alert::success('Successfull','Pre-Approved');
-        return redirect('officer/pre-approved-membership');
+        $pre_app = 'New Pre-Appproved Membership Application';
+       
+       event(New EventsPreMembershipApplication($pre_app));
+        return redirect('officer/membership-application');
     }
 
     /**

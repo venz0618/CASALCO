@@ -23,16 +23,17 @@
   </thead>
   <tbody>
     
-   @foreach ($loan as $l)
+   @foreach ($loan as $loans)
+   @foreach ( $loans->express as $l )
    <tr>
        <td>{{$l->name_of_member}}</td>
        <td>{{$l->account_no}}</td>
        <td>{{$l->loan_type}}</td>
        <td>{{$l->created_at}}</td>
      
-       <td> @if($l->is_approved == 0)
+       <td> @if($loans->is_approved == 0)
         <span class="badge badge-secondary">Pending</span>
-        @elseif ($l->is_approved == 1)
+        @elseif ($loans->is_approved == 1)
         <span class="badge badge-success">Pre-Approved</span>
         @else
         <span class="badge badge-success">Approved</span>
@@ -41,6 +42,7 @@
             <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#myModal{{ $l->id }}">Details</button>
         </td> 
     </tr>
+   @endforeach
    @endforeach
 
 
@@ -53,7 +55,8 @@
 </div>
 
 
-@foreach ($loan as $l)
+@foreach ($loan as $loans)
+ @foreach ( $loans->express as $l )
 <!-- AMORTIZATION COMPUTATION -->
 
 
@@ -67,7 +70,7 @@
                     $mode_of_payment = $l->mode_of_payment;
                     $amount = (int)$l->amount_applied;
                     $term_applied = (int)$l->term_applied;
-                    $status = $l->is_approved;
+                    $status = $loans->is_approved;
                     $x=1;
                     if($loan_type == "pcl"){
                         
@@ -296,6 +299,7 @@
                 <tr>
                   
                     <th>No.</th>
+                    <td>Date</td>
                     <th>Principal</th>
                     <th>Interest</th>
                     <th>Repayment</th>
@@ -323,11 +327,21 @@
                               </tr>
                             @else
                             @for ($i = $repayment;$i >=0; $i-=$monthlyINt)
+                                <?php
+                                  $today = $date->format('Y-m-d');
+                                 
+                                  $repeat = strtotime("++2 day",strtotime($today));
+                                  $today = date('Y-m-d',$repeat);
+                                
+                                  
+                                ?>
+                          
                             <tr>
                             
                             <td> 
                                 {{$x++}}
                                         </td>
+                                        <td>{{ $today }}</td>
 
                             
                                 <td><span><?php echo number_format($monthly, 2, '.', ',')?></span></td>
@@ -357,7 +371,7 @@
     </div>
   </div>
   @endforeach
-
+  @endforeach
 
 
 

@@ -13,6 +13,7 @@
 <form action="{{ url('/express-loan-application-form') }}" method="POST" enctype="multipart/form-data" class="this-form">
     <div class="content-form-page">
         @csrf
+        <input  type="hidden" value="{{ Auth::user()->id }}" name="user_id">
         <div class="row">
             <div class="header-text">
                 <ul>

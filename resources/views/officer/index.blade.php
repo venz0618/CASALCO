@@ -32,6 +32,31 @@
   <link rel="stylesheet" href="{{ asset('/pluto/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('/pluto/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('/pluto/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+			<script>
+
+				// Enable pusher logging - don't include this in production
+				Pusher.logToConsole = true;
+
+				var pusher = new Pusher('daa0ec2c66fd9f704496', {
+				cluster: 'ap1'
+				});
+
+				var channel = pusher.subscribe('casalco-channel');
+				channel.bind('membership-app', function(data) {
+				// // Alert::success(JSON.stringify(data.name) + 'has submitted');
+				// alert(JSON.stringify(data.name) + 'has submitted')->success();
+				toastr.info(JSON.stringify(data.name) + 'has submitted')
+				// alert(JSON.stringify(data));
+				});
+			</script>
+  
+
 </head>
 <body class="">
 	<div id="body" class="dashboard dashboard_1">

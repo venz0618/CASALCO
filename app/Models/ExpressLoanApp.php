@@ -11,20 +11,23 @@ class ExpressLoanApp extends Model
 
     protected $fillable = [
         'loan_application_id',
-        'acc_id',
-        'name',
+        'name_of_member',
+        'account_no',
         'present_address',
         'permanent_address',
         'loan_type',
-        'emp',
-        'emp_address',
-        'email',
-        'amount',
-        'mode_payment',
+        'employer',
+        'employer_address',
+        'date_of_birth',
+        'age',
+        'cellphone_no',
+        'tin_no',
+        'email_address',
+        'facebook_account',
+        'amount_applied',
         'term_applied',
-        'phone_no',
-        'tin',
-        'fb_acc',
+        'mode_of_payment',
+        'scanned_signature'
 
     ];
 

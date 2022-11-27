@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\LoanApplication;
 use App\Models\Member;
 use App\Models\LadLoans;
+use Carbon\Carbon;
 class ActiveLoanController extends Controller
 {
     /**
@@ -16,20 +17,24 @@ class ActiveLoanController extends Controller
      */
     public function index()
     {
-        $express = Member::join('users', 'users.id', '=', 'members.users_id')
-        ->join('membership_applications', 'membership_applications.id', '=', 'members.membership_application_id')
-        ->select('users.*', 'membership_applications.*')
-        ->where('users_id', '=', auth()->user()->id)
-        ->first();
+        // $express = Member::join('users', 'users.id', '=', 'members.users_id')
+        // ->join('membership_applications', 'membership_applications.id', '=', 'members.membership_application_id')
+        // ->select('users.*', 'membership_applications.*')
+        // ->where('users_id', '=', auth()->user()->id)
+        // ->first();
 
-        $acc_id = $express['acc_id'];
-        $loan = LoanApplication::where('account_no', $acc_id)->get();
-        $LAD =  LadLoans::where('account_no', $acc_id)->get();
+        // $acc_id = $express['acc_id'];
+        // $loan = LoanApplication::where('account_no', $acc_id)->get();
+        // $LAD =  LadLoans::where('account_no', $acc_id)->get();
+
+        $loan = LoanApplication::where('users_id', auth()->id())->get();
+        $addDays = 30;
+        $date = Carbon::now();
+        $date = $date->addDays($addDays);
 
 
 
-
-        return view('client.dashboard.active-loan', compact('loan','LAD'));
+        return view('client.dashboard.active-loan', compact('loan', 'date'));
     }
 
     /**

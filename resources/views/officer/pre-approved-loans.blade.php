@@ -19,15 +19,15 @@
                 </tr>
               </thead>
               <tbody>
-                
-               @foreach ($loan as $l)
+                @foreach ($loan as $loans)
+                @foreach ( $loans->express as $l )
                   <tr>
                    <td>{{$l->name_of_member}}</td>
                    <td>{{$l->account_no}}</td>
                    <td>{{$l->loan_type}}</td>
                    <td>{{$l->created_at}}</td>
                  
-                   <td> @if($l->is_approved==1)
+                   <td> @if($loans->is_approved==1)
                     <span class="badge badge-success">Pre-Approved</span>
                   @endif
                 </td>
@@ -36,10 +36,11 @@
                     </td>  --}}
                 </tr>
                @endforeach
+               @endforeach
 
 
                  <!--LAD LOAN-->
-                 @foreach ($LAD as $lad)
+                 {{-- @foreach ($LAD as $lad)
                  <tr>
                    <td>{{$lad->name_of_member}}</td>
                    <td>{{$lad->account_no}}</td>
@@ -50,11 +51,9 @@
                    <span class="badge badge-success">Pre-Approved</span>
                  @endif
                </td>
-                   {{-- <td>
-                     <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#myModal01{{ $lad->id }}">Details</button>
-                   </td>  --}}
+                  
                </tr>
-               @endforeach
+               @endforeach --}}
                 
               </tbody>
             </table>

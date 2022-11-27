@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\MembershipApplication;
+use App\Events\MembershipApplication as EventsMembershipApplication;
 use App\Models\Beneficiary;
 use App\Models\Spouse;
 use App\Http\Controllers\Controller;
@@ -71,6 +72,9 @@ class MembershipApplicationController extends Controller
             ]);
         }
        Alert::success('Membership Submitted Successfully', 'Please Wait For a Call');
+       $name = 'New Membership Application';
+       
+        event(new EventsMembershipApplication($name));
 
         return redirect('/pre_seminar');
     }

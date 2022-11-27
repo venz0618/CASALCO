@@ -5,6 +5,7 @@ namespace App\Http\Controllers\client;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Member;
+use App\Models\LoanApplication;
 use App\Models\LadLoans;
 use RealRashid\SweetAlert\Facades\Alert;
 use Carbon\Carbon;
@@ -47,6 +48,11 @@ class LadLoansController extends Controller
      */
     public function store(Request $request)
     {
+
+        $loan = new LoanApplication();
+        $loan->users_id = $request->user_id;
+        $loan->save();
+
         $request->validate([
             'name_of_member'        => 'required|string',
             'account_no'            => 'required',
@@ -72,6 +78,7 @@ class LadLoansController extends Controller
         $pikshurSaPerma = time().$request->file('scanned_signature')->getClientOriginalName();
         $path = $request->file('scanned_signature')->storeAs('image', $pikshurSaPerma, 'public');
         $loanApp["scanned_signature"] = '/storage/'.$path;
+        $loanID["loan_application_id"] = $loan->id;
        
 
         LadLoans::create($loanApp);

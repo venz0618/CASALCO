@@ -18,25 +18,26 @@ return new class extends Migration
         Schema::create('express_loan_apps', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(LoanApplication::class);
-            $table->string('acc_id');
-            $table->string('name');
+            $table->string('name_of_member');
+            $table->string('account_no');
             $table->string('present_address');
             $table->string('permanent_address');
-            $table->string('loan_type')->nullable();
-            $table->string('emp');
-            $table->string('emp_address');
-            $table->string('email');
-            $table->string('amount');
-            $table->string('mode_payment');
-            $table->string('term_applied');
-            $table->string('phone_no');
-            $table->string('tin');
-            $table->string('fb_acc');
-           
-            $table->boolean('loanApp_type')->comment('0 = online, 1 = walk-in');
-            $table->boolean('loan_cat')->comment('0 = regular, 1 = special');
-            
+            $table->string('loan_type');
+            $table->string('employer');
+            $table->string('employer_address');
+            $table->string('date_of_birth');
+            $table->string('age');
+            $table->string('cellphone_no');
+            $table->string('tin_no');
+            $table->string('email_address');
+            $table->string('facebook_account');
+            $table->integer('amount_applied');
+            $table->integer('term_applied');
+            $table->string('mode_of_payment');
+            $table->string('scanned_signature');
             $table->timestamps();
+            
+            
         });
     }
 

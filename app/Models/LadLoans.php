@@ -28,4 +28,8 @@ class LadLoans extends Model
         'mode_of_payment',
         'scanned_signature'
     ];
+
+    public function loan(){
+        return $this->belongsTo(LoanApplication::class);
+}
 }

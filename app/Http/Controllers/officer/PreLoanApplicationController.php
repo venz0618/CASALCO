@@ -18,9 +18,9 @@ class PreLoanApplicationController extends Controller
     public function index()
     {
         $loan = LoanApplication::where('is_approved', 0)->get();
-        $LAD = LadLoans::where('is_approved', 0)->get();
+       
         
-        return view('officer.loan', compact('loan', 'LAD'));
+        return view('officer.loan', compact('loan'));
     }
 
     /**
@@ -89,7 +89,6 @@ class PreLoanApplicationController extends Controller
     public function edit($id)
     {
         $loan = LoanApplication::find($id);
-        $LAD = LadLoans::find($id);
         return view('officer.loan', compact('loan'));
     }
 

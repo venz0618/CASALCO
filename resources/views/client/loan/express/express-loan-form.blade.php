@@ -4,6 +4,7 @@
 <form action="{{ url('/express-loan-application-form') }}" method="POST" enctype="multipart/form-data" class="this-form">
     <div class="content-form-page">
         @csrf
+
         <div class="row">
             <div class="header-text">
                 <ul>
@@ -20,6 +21,7 @@
             </div>
         </div>
 
+      
         <div class="col-lg-3 col-md-3">
             <div class="form-group">
                 <small>Date</small><span class="asterisk">*</span>
