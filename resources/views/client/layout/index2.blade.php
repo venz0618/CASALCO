@@ -38,7 +38,7 @@
 </head>
 <body class="corporate">
 
-  @if(Request()->is('membership-application-form') || Request()->is('express-loan-application-form'))
+  @if(Request()->is('membership-application-form') || Request()->is('express-loan-application-form') || Request()->is('loan-application-form'))
     @include('client.layout.header')
   @else
     @include('client.layout.topbar')
@@ -61,25 +61,6 @@
   @include('client.scripts.core-plugins')
   @include('client.scripts.page-level-js')
   @include('sweetalert::alert')
-
-
-  <script>
-    var state= false;
-    function toggle(){
-      if(state){
-        document.getElementById('password').
-        setAttribute("type","password");
-        document.getElementById("eye").style.color='#7a797e';
-        state = false;
-      }
-      else{
-        document.getElementById('password').
-        setAttribute("type","text");
-        document.getElementById("eye").style.color='#5887ef';
-        state = true;
-      }
-    } 
-  </script>
 
 </body>
 </html>

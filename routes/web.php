@@ -141,3 +141,6 @@ Route::view('about-us', 'client.about-us.about-us-index');
 Route::view('membership-information', 'client.membership.membership-information.mem-info-index');
 Route::view('membership-application-form', 'client.membership.membership-application-form.mem-app-form-index');
 Route::view('seminar-index', 'client.online_seminar.seminar-index');
+Route::view('contact-us', 'client.contact-us.contact-us-index');
+// Route::resource('loan-application-form', LoanApplicationController::class);
+

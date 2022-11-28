@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Carbon\Carbon;
 use App\Models\MembershipApplication;
 use App\Events\MembershipApplication as EventsMembershipApplication;
 use App\Models\Beneficiary;
@@ -49,32 +49,40 @@ class MembershipApplicationController extends Controller
         $path2 = $r->file('empIDpic')->storeAs('image', $fileName2, 'public');
         $requestData["selfie_pic"] = '/storage/'.$path;
         $requestData["empIDpic"] = '/storage/'.$path2;
-        $ms = MembershipApplication::create($requestData);
 
-        if (!empty($r->spouseFname)) {
-            $ms->spouse()->create([
-                'spouseFname'       => $r->spouseFname,
-                'spouseAge'         => $r->spouseAge,
-                'spouseOcc'         => $r->spouseOcc,
-                'spouseMI'          => $r->spouseMI,
-                'spouseEmplrName'   => $r->spouseEmplrName,
-                'spouseConNum'      => $r->spouseConNum,
-                'spouse_mother'     => $r->spouse_mother,
-            ]);
+        $edad = $requestData['dob'];
+        $years = Carbon::parse($edad)->age;
+
+
+        if ($years < 18) {
+            return back()->with('error', 'Applicants below 18 years old are not allowed to apply!');
+
+        } else {
+            $ms = MembershipApplication::create($requestData);
+
+            if (!empty($r->spouseFname)) {
+                $ms->spouse()->create([
+                    'spouseFname'       => $r->spouseFname,
+                    'spouseAge'         => $r->spouseAge,
+                    'spouseOcc'         => $r->spouseOcc,
+                    'spouseMI'          => $r->spouseMI,
+                    'spouseEmplrName'   => $r->spouseEmplrName,
+                    'spouseConNum'      => $r->spouseConNum,
+                    'spouse_mother'     => $r->spouse_mother,
+                ]);
+            }
+
+            if(!empty($r->benName)){
+                $ms->ben()->create([
+                    'benName' => $r->benName,
+                    'benRelation' => $r->benRelation,
+                    'benAge' => $r->benAge,
+                    'benAddress' => $r->benAddress,
+                ]);
         }
 
-        if(!empty($r->benName)){
-            $ms->ben()->create([
-                'benName' => $r->benName,
-                'benRelation' => $r->benRelation,
-                'benAge' => $r->benAge,
-                'benAddress' => $r->benAddress,
-            ]);
         }
        Alert::success('Membership Submitted Successfully', 'Please Wait For a Call');
-       $name = 'New Membership Application';
-       
-        event(new EventsMembershipApplication($name));
 
         return redirect('/pre_seminar');
     }

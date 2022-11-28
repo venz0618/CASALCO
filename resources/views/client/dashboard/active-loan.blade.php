@@ -71,7 +71,10 @@
                     $amount = (int)$l->amount_applied;
                     $term_applied = (int)$l->term_applied;
                     $status = $loans->is_approved;
-                    $x=1;
+                    $date_app = $l->created_at;
+                    $x=0;
+                    
+                    $y =1;
                     if($loan_type == "pcl"){
                         
                         $servicefee = $amount*0.04+100;
@@ -328,10 +331,10 @@
                             @else
                             @for ($i = $repayment;$i >=0; $i-=$monthlyINt)
                                 <?php
-                                  $today = $date->format('Y-m-d');
-                                 
-                                  $repeat = strtotime("++2 day",strtotime($today));
-                                  $today = date('Y-m-d',$repeat);
+                                  $today = $date_app->format('Y-m-d');
+                                  $x+=30;
+                                  $repeat = strtotime("+ $x days");
+                                  $today = $date_app->format('Y-m-d',strtotime( "+ $x days" ));
                                 
                                   
                                 ?>
@@ -339,9 +342,9 @@
                             <tr>
                             
                             <td> 
-                                {{$x++}}
+                                {{$y++}}
                                         </td>
-                                        <td>{{ $today }}</td>
+                                        <td>{{ $date_app->format('Y-m-d',strtotime( "+ $x days" ))}}</td>
 
                             
                                 <td><span><?php echo number_format($monthly, 2, '.', ',')?></span></td>
