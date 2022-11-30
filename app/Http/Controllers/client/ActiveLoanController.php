@@ -28,13 +28,11 @@ class ActiveLoanController extends Controller
         // $LAD =  LadLoans::where('account_no', $acc_id)->get();
 
         $loan = LoanApplication::where('users_id', auth()->id())->get();
-        $addDays = 30;
-        $date = Carbon::now();
-        $date = $date->addDays($addDays);
+       
 
 
 
-        return view('client.dashboard.active-loan', compact('loan', 'date'));
+        return view('client.dashboard.active-loan', compact(['loan']));
     }
 
     /**

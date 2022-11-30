@@ -31,11 +31,11 @@
        <td>{{$l->loan_type}}</td>
        <td>{{$l->created_at}}</td>
      
-       <td> @if($l->is_approved == 0)
+       <td> @if($loans->is_approved == 0)
         <span class="badge badge-secondary">Pending</span>
-        @elseif ($l->is_approved == 1)
+        @elseif ($loans->is_approved == 1)
         <span class="badge badge-primary">Pre-Approved</span>
-        @elseif ($l->is_approved == 2)
+        @elseif ($loans->is_approved == 2)
         <span class="badge badge-success">Approved</span>
         @else
         <span class="badge badge-danger">Disapproved</span>
@@ -74,8 +74,8 @@
                     $term_applied = (int)$l->term_applied;
                     $status = $loans->is_approved;
                     $date_app = $l->created_at;
-                    $x=0;
-                    
+                    $x=1;
+                    $semi = 15;
                     $y =1;
                     if($loan_type == "pcl"){
                         
@@ -316,9 +316,11 @@
                       
                             @if ($status == 0)
                             <tr>
+                              
                               <td> 
                                 {{$x++}}
                                         </td>
+                                        <td></td>
                             
                               <td> 
                                 <span><?php echo number_format($monthly, 2, '.', ',')?></span></td>
@@ -327,28 +329,28 @@
                                           </td>
   
                               
-                                  
-                              
-                              </tr>
-                            @else
+                             @else     
                             @for ($i = $repayment;$i >=0; $i-=$monthlyINt)
                                 <?php
-                                  $today = $date_app->format('Y-m-d');
-                                  $x+=30;
-                                  $repeat = strtotime("+ $x days");
-                                  $today = $date_app->format('Y-m-d',strtotime( "+ $x days" ));
-                                
-                                  
+                                  if($mode_of_payment == "semi-monthly"){
+                                    $now = strtotime($date_app. ' + 15 days');
+                                  }
+                                  else{
+                                    $now = strtotime($date_app);
+                                  }
+
                                 ?>
                           
                             <tr>
                             
                             <td> 
                                 {{$y++}}
-                                        </td>
-                                        <td>{{ $date_app->format('Y-m-d',strtotime( "+ $x days" ))}}</td>
+                              </td>
+                              
+                                        
+                                        <td><?php  echo date('m/d/Y', strtotime('-' . $x++ .' month', $now));?></td>
 
-                            
+                               
                                 <td><span><?php echo number_format($monthly, 2, '.', ',')?></span></td>
                                 <td><span><?php echo number_format($interest, 2, '.', ',')?></span></td>
                                 <td><span><?php echo number_format($monthlyINt, 2, '.', ',')?></span></td>
@@ -360,7 +362,7 @@
                            
                             @endfor
                             @endif
-                     
+                           
                   </tbody>
             </table>
           </div>

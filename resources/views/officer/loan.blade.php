@@ -37,7 +37,7 @@
                       @endif
                     </td>
                       <td>
-                        <a href="{{ route('loan_application.show', $l->id) }}"
+                        <a href="{{ route('loan_application.show', $loans->id) }}"
                           <button class="btn btn-success">Details</button>
                         </td> 
                     </tr>
