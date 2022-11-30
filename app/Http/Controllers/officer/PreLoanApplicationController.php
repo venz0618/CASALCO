@@ -103,10 +103,16 @@ class PreLoanApplicationController extends Controller
     {
         $loan = LoanApplication::find($id);
         $loan->is_approved = $request->is_approved;
-        // $loan->acc_id = $request->acc_id;
-        // $loan->or_no = $request->or_no;
-        Alert::success('Successfull','Pre-Approved');
         $loan->save();
+        $status = $loan->is_approved;
+        if ($status == 1){
+            Alert::success('Successfull','Pre-Approved');
+        }
+        if($status == 3){
+            Alert::success('Successfull','Disapproved');
+        }
+        
+       
 
       
 

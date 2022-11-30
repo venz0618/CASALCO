@@ -44,7 +44,7 @@
                       </td>
 
                       <td>
-                        <a href="{{url('officer/membership_info', $m->id)}}">
+                        <a href="{{ route('membership_info.show', $m->id) }}"
                           <button class="btn btn-success">Details</button>
                         </a>
                       </td>

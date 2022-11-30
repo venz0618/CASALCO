@@ -265,11 +265,9 @@ class PreMembershipApplicationController extends Controller
     public function update(Request $request, $id)
     {
         $membership = MembershipApplication::find($id);
-        $membership->is_approved = $request->is_approved;
-        $membership->acc_id = $request->acc_id;
-        $membership->or_no = $request->or_no;
-        $membership->assigned_officer = auth()->user()->username;
-        $membership->save();
+        $input = $request->all();
+        $input ['assigned_officer'] = auth()->user()->username;
+        $membership->fill($input)->save();
 
         Alert::success('Successfull','Pre-Approved');
         $pre_app = 'New Pre-Appproved Membership Application';

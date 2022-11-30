@@ -31,12 +31,14 @@
        <td>{{$l->loan_type}}</td>
        <td>{{$l->created_at}}</td>
      
-       <td> @if($loans->is_approved == 0)
+       <td> @if($l->is_approved == 0)
         <span class="badge badge-secondary">Pending</span>
-        @elseif ($loans->is_approved == 1)
-        <span class="badge badge-success">Pre-Approved</span>
-        @else
+        @elseif ($l->is_approved == 1)
+        <span class="badge badge-primary">Pre-Approved</span>
+        @elseif ($l->is_approved == 2)
         <span class="badge badge-success">Approved</span>
+        @else
+        <span class="badge badge-danger">Disapproved</span>
       @endif</td>
        <td>
             <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#myModal{{ $l->id }}">Details</button>

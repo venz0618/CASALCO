@@ -14,7 +14,7 @@
                   {{-- <th>Image</th> --}}
                   <th>Loan Type</th>
                   <th>Date Applied</th>
-                  <th>Status</th>
+        
                   {{-- <th>Actions</th> --}}
                 </tr>
               </thead>
@@ -28,7 +28,7 @@
                    <td>{{$l->created_at}}</td>
                  
                    <td> @if($loans->is_approved==1)
-                    <span class="badge badge-success">Pre-Approved</span>
+                    <span class="badge badge-primary">Pre-Approved</span>
                   @endif
                 </td>
                    {{-- <td>

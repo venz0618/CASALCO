@@ -37,7 +37,8 @@
                       @endif
                     </td>
                       <td>
-                          <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#myModal{{ $l->id }}">Details</button>
+                        <a href="{{ route('loan_application.show', $l->id) }}"
+                          <button class="btn btn-success">Details</button>
                         </td> 
                     </tr>
                   @endforeach
