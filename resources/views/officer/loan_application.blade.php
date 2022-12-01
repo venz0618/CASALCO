@@ -134,7 +134,7 @@
                 <input type="hidden" name="is_approved" value="3">
               <button type="submit" class="btn btn-warning ">Disapproved</button>
                 </form>
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            
          
           </div>
        </div>

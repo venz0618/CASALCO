@@ -34,19 +34,19 @@
             <div class="col-lg-4">
               <div class="form-group">
               <label for="First Name" class="form-label">First Name</label>
-                <input name ="Fname" type="text" class="form-control"  placeholder="First Name" value="{{$membership->first_name}}">
+                <input name ="first_name" type="text" class="form-control"  placeholder="First Name" value="{{$membership->first_name}}">
               </div>
             </div>
             <div class="col-lg-4">
               <div class="form-group">
               <label for="First Name" class="form-label">Middle Name</label>
-                <input name ="Mname" type="text" class="form-control"  placeholder="Middle Name" value="{{$membership->middle_name}}">
+                <input name ="middle_name" type="text" class="form-control"  placeholder="Middle Name" value="{{$membership->middle_name}}">
               </div>
             </div>
             <div class="col-lg-4">
               <div class="form-group">
               <label for="First Name" class="form-label">Last Name</label>
-                <input name ="Lname" type="text" class="form-control"  placeholder="Last Name" value="{{$membership->last_name}}">
+                <input name ="last_name" type="text" class="form-control"  placeholder="Last Name" value="{{$membership->last_name}}">
               </div>
             </div>
             <div class="col-lg-4">
@@ -130,7 +130,7 @@
             <div class="col-lg-4">
               <div class="form-group">
               <label for="First Name" class="form-label">Religion</label>
-                <input name ="religion" type="text" class="form-control"  placeholder="Religion" value="{{$membership->Religion}}">
+                <input name ="religion" type="text" class="form-control"  placeholder="Religion" value="{{$membership->religion}}">
               </div>
             </div>
             <div class="col-lg-4">

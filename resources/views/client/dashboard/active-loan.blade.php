@@ -333,7 +333,16 @@
                             @for ($i = $repayment;$i >=0; $i-=$monthlyINt)
                                 <?php
                                   if($mode_of_payment == "semi-monthly"){
-                                    $now = strtotime($date_app. ' + 15 days');
+                                   
+                                    $now = strtotime($date_app. "+14 day");
+
+                                    //15th
+                                    $month_line_15 = strtotime($date_app." +14 day");
+                                    //last day of month
+                                    $month_line_last = strtotime($date_app." next month - 1 hour");
+                                    $day = date("M-d", $month_line_15);
+                                    $month_int = date("M-d", $month_line_last);
+                                    $date_app = date("Y-m-d",strtotime($date_app." +1month"));
                                   }
                                   else{
                                     $now = strtotime($date_app);
@@ -348,7 +357,7 @@
                               </td>
                               
                                         
-                                        <td><?php  echo date('m/d/Y', strtotime('-' . $x++ .' month', $now));?></td>
+                                        <td><?php  echo date('m/t/Y', strtotime('+' . $x++ .' month', $now));?></td>
 
                                
                                 <td><span><?php echo number_format($monthly, 2, '.', ',')?></span></td>
