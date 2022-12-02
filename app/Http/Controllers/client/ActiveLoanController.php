@@ -28,6 +28,11 @@ class ActiveLoanController extends Controller
         // $LAD =  LadLoans::where('account_no', $acc_id)->get();
 
         $loan = LoanApplication::where('users_id', auth()->id())->get();
+                        
+                
+                    
+                
+                  
        
 
 

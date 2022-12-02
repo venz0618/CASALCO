@@ -61,28 +61,24 @@
  @foreach ( $loans->express as $l )
 <!-- AMORTIZATION COMPUTATION -->
 
-
-<div class="modal fade" id="myModal{{ $l->id }}">
-    <div class="modal-dialog modal-lg modal-dialog-scrollable">
-       <div class="modal-content">
-          <!-- Modal Header -->
-
-            <?php
-                    $loan_type = $l->loan_type;
+    <?php
+    $loan_type = $l->loan_type;
                     $mode_of_payment = $l->mode_of_payment;
                     $amount = (int)$l->amount_applied;
                     $term_applied = (int)$l->term_applied;
                     $status = $loans->is_approved;
-                    $date_app = $l->created_at;
+                    $date_app = $loans->created_at;
                     $x=1;
-                    $semi = 14;
+                    // $semi = 14;
                     $y =1;
                     $now = strtotime($date_app);
-                    $start = date('m/15/Y');
-                    $month_mid = date("m/15/Y", strtotime($start));
-                    $month_last = date("m/t/Y", strtotime($start));             
-                    $start = date("m/d/Y",strtotime($start." +1month"));
-                    $start = date("m/d/Y",strtotime($start." +15day"));
+                    // $start = date('m/15/Y');
+                    // // $month_mid = date("m/15/Y", strtotime($start));
+                    // // $month_last = date("m/t/Y", strtotime($start));             
+                    // // $start = date("m/d/Y",strtotime($start." +1month"));
+                    // // $start = date("m/d/Y",strtotime($start." +15day"));
+
+
                     if($loan_type == "pcl"){
                         
                         $servicefee = $amount*0.04+100;
@@ -236,7 +232,15 @@
                     $repayment = $totalamount-$monthlyINt;
                     }
                     }
-                    ?>
+
+    ?>
+
+
+<div class="modal fade" id="myModal{{ $l->id }}">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+       <div class="modal-content">
+          <!-- Modal Header -->
+
 
 <!-- END OF COMPUTATION -->
 
@@ -283,19 +287,19 @@
         <div class="col-lg-4 col-sm-12">
         <fieldset>
             <label for="name"> AMOUNT TO RECIEVE:</label>
-            <h5>PHP <?php echo number_format($deduction, 2, '.', ',')?></h5>
+            <h5>PHP {{number_format($deduction, 2, '.', ',')}}</h5>
         </fieldset>
         </div>
         <div class="col-lg-4 col-sm-12">
         <fieldset>
             <label for="name">INTEREST:</label>
-            <h5><?php echo number_format($totalinterest, 2, '.', ',')?></h5>
+            <h5> {{number_format($totalinterest, 2, '.', ',')}}</h5>
         </fieldset>
         </div>
         <div class="col-lg-4 col-sm-12">
         <fieldset>
             <label for="name">TOTAL AMOUNT DUE:</label>
-            <h5>PHP <?php echo number_format($totalamount, 2, '.', ',')?></h5>
+            <h5>PHP {{number_format($totalamount, 2, '.', ',')}}</h5>
 
         </fieldset>
         </div>
@@ -329,9 +333,9 @@
                                         <td></td>
                             
                               <td> 
-                                <span><?php echo number_format($monthly, 2, '.', ',')?></span></td>
-                                <td><span><?php echo number_format($interest, 2, '.', ',')?></span></td>
-                                <td><span><?php echo number_format($monthlyINt, 2, '.', ',')?></span></td>
+                                <span>{{number_format($monthly, 2, '.', ',')}}</span></td>
+                                <td><span>{{number_format($interest, 2, '.', ',')}}</span></td>
+                                <td><span>{{number_format($monthlyINt, 2, '.', ',')}}</span></td>
                                           </td>
   
                               
@@ -357,7 +361,7 @@
 
 
                                           @else
-                                          <td> 
+                                          <td>
                                             <span>{{date('m/t/Y', strtotime('+' . $x++ .' month', $now))}}</span></td>
                                           
                                           @endif
@@ -365,9 +369,9 @@
                                         
 
                                
-                                <td><span><?php echo number_format($monthly, 2, '.', ',')?></span></td>
-                                <td><span><?php echo number_format($interest, 2, '.', ',')?></span></td>
-                                <td><span><?php echo number_format($monthlyINt, 2, '.', ',')?></span></td>
+                                <td><span>{{number_format($monthly, 2, '.', ',')}}</span></td>
+                                <td><span>{{number_format($interest, 2, '.', ',')}}</span></td>
+                                <td><span>{{number_format($monthlyINt, 2, '.', ',')}}</span></td>
                                 <td><span>{{number_format($i, 2, '.', ',')}}</span></td>
                             
                             </tr>

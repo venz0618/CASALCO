@@ -29,14 +29,22 @@
 </div> -->
             <div class="row">
                     <div class="col-md-8 offset-md-2">
-                        <video width="110%" controls loop>
+                        <video id="video" width="110%"  controls="true">
                                 <source src="../klassy/images/CASALCO_ORIENTATION.mp4" type="video/mp4">
                         </video>
 
                     </div>
+                    
                     <div class="col-md-10 offset-md-6">
                     <a class="btn btn-primary" href="/" role="button">If you are done watching, click Return to home page</a>
                     </div>
+
+                    <div id="status" class="incomplete">
+                      <span>Play status: </span>
+                      <span class="status complete">COMPLETE</span>
+                      <span class="status incomplete">INCOMPLETE</span>
+                      <br />
+                      </div>
             </div>
 
 
