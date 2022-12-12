@@ -10,6 +10,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Hash;
+use Notification;
+use App\Notifications\MembershipApplicationNotification;
 
 class MembershipApplicationController extends Controller
 {
@@ -83,6 +85,34 @@ class MembershipApplicationController extends Controller
 
         }
        Alert::success('Membership Submitted Successfully', 'Please Wait For a Call');
+
+       $membership=[
+
+        'greeting'          => 'Good day '.$ms->first_name.',',
+        'body'              => 'We have recieved your membership application, and thank you for choosing CASALCO!',
+        'second'            => 'We will get back to you within 3 working days for the next step of your application. Please wait for a CALL',
+        'actiontext'        =>'casalco.coop.com',
+        'actionurl'         => 'http://127.0.0.1:8000/',
+        'lastline'          => 'Thank you!'
+        
+
+
+
+    ];
+
+
+
+    Notification::send( $ms, new MembershipApplicationNotification($membership));
+
+    // $basic  = new \Vonage\Client\Credentials\Basic("637f615c", "Z4WOX9oJ5XaIbkZw");
+    // $client = new \Vonage\Client($basic);
+
+    // $message = $client->message()->send([
+    //     'to'   => "$ms->contact_number",
+    //     'from' => 'CASALCO',
+    //     'text' => 'We have recieved your membership application, and thank you for choosing CASALCO! We will get back to you within 3 working days for the next step of your application. Please wait for a CALL '
+    // ]);
+    
 
         return redirect('/pre_seminar');
     }

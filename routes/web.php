@@ -45,7 +45,7 @@ use App\Http\Controllers\officer\MembershipInfoController;
 
 // use App\Http\Controllers\client\MembershipController;
 
-use App\Http\Controllers\PracticeController;
+use App\Http\Controllers\HomeController;
 
 use  App\Http\Controllers\client\ExpressLoanController;
 use Illuminate\Support\Facades\Auth;
@@ -144,5 +144,6 @@ Route::view('membership-information', 'client.membership.membership-information.
 Route::view('membership-application-form', 'client.membership.membership-application-form.mem-app-form-index');
 Route::view('seminar-index', 'client.online_seminar.seminar-index');
 Route::view('contact-us', 'client.contact-us.contact-us-index');
+Route::get('send',[HomeController::class, "sendnotification"]);
 // Route::resource('loan-application-form', LoanApplicationController::class);
 

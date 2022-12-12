@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\MembershipApplication;
 use App\Models\Spouse;
 use RealRashid\SweetAlert\Facades\Alert;
+use Notification;
+use App\Notifications\MembershipApplicationNotification;
 
 
 class PreMembershipApplicationController extends Controller
@@ -264,15 +266,32 @@ class PreMembershipApplicationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $membership = MembershipApplication::find($id);
+        $membership_app = MembershipApplication::find($id);
         $input = $request->all();
         $input ['assigned_officer'] = auth()->user()->username;
-        $membership->fill($input)->save();
+        $membership_app->fill($input)->save();
 
         Alert::success('Successfull','Pre-Approved');
-        $pre_app = 'New Pre-Appproved Membership Application';
+      
+        $membership=[
+
+            'greeting'          => 'Good day '.$membership_app->first_name.',',
+            'body'              => 'We have recieved your membership application, and thank you for choosing CASALCO!',
+            'second'            => 'We will get back to you within 3 working days for the next step of your application. Please wait for a CALL',
+            'actiontext'        =>'casalco.coop.com',
+            'actionurl'         => 'http://127.0.0.1:8000/',
+            'lastline'          => 'Thank you!'
+            
+
+
+
+        ];
+
+    
+        Notification::send( $membership_app, new MembershipApplicationNotification($membership));
+        
        
-       event(New EventsPreMembershipApplication($pre_app));
+      
         return redirect('officer/membership-application');
     }
 
